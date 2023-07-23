@@ -1,7 +1,7 @@
 {
     "tasks": [
-        {"task": "Testowy task", "id": 1},
-        {"task": "Testowy task 2", "id": 2},
-        {"task": "Testowy task 3", "id": 3}
+        {"task": "Testowy task", "id": 1, "isDone": false},
+        {"task": "Testowy task 2", "id": 2, "isDone": false},
+        {"task": "Testowy task 3", "id": 3, "isDone": false}
     ]
 }

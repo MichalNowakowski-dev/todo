@@ -1,13 +1,20 @@
+import { Task } from "../App";
+
 interface Props {
-  tasksList: any;
-  deleteTask: any;
+  tasksList: Task[];
+  deleteTask: (taskId: number) => void;
+  taskIsDone: (e: any, task: Task) => void;
 }
 
-function DisplayTasks({ tasksList, deleteTask }: Props) {
+function DisplayTasks({ tasksList, deleteTask, taskIsDone }: Props) {
   return (
     <ul className="list-group">
       {tasksList.map((task: any) => (
-        <li key={task.id} className="list-group-item task">
+        <li
+          onClick={(e) => taskIsDone(e, task)}
+          key={task.id}
+          className="list-group-item task"
+        >
           {task.task}
           <button
             onClick={() => deleteTask(task.id)}

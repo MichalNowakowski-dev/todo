@@ -7,6 +7,7 @@ function AddTask({ addTask }: Props) {
     <form onSubmit={addTask}>
       <label htmlFor="todoInput">Wpisz następne zadanie: </label>
       <input
+        autoComplete="off"
         placeholder="Np. Wyrzucić smieci..."
         type="text"
         id="todoInput"

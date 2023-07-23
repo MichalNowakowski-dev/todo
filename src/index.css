@@ -8,6 +8,7 @@ div.container {
   height: auto;
   width: 600px;
   display: flex;
+
   flex-direction: column;
   justify-content: space-between;
 }
@@ -29,4 +30,10 @@ ul {
 .list-group-item.task {
   display: flex;
   justify-content: space-between;
+  cursor: pointer;
+}
+
+li.list-group-item.task.isDone {
+  text-decoration: line-through;
+  color: red;
 }
