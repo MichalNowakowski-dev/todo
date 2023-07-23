@@ -35,5 +35,5 @@ ul {
 
 li.list-group-item.task.isDone {
   text-decoration: line-through;
-  color: red;
+  color: gray;
 }

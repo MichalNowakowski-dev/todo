@@ -7,17 +7,24 @@ interface Props {
 }
 
 function DisplayTasks({ tasksList, deleteTask, taskIsDone }: Props) {
+  const handleDeleteTask = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    taskId: number
+  ) => {
+    e.stopPropagation(); // Zatrzymujemy propagację zdarzenia, aby kliknięcie na przycisk nie wpływało na kliknięcie na li
+    deleteTask(taskId); // Wywołujemy funkcję deleteTask, aby usunąć zadanie
+  };
   return (
     <ul className="list-group">
-      {tasksList.map((task: any) => (
+      {tasksList.map((task: Task) => (
         <li
           onClick={(e) => taskIsDone(e, task)}
           key={task.id}
-          className="list-group-item task"
+          className={`list-group-item task ${task.isDone ? "isDone" : ""}`}
         >
           {task.task}
           <button
-            onClick={() => deleteTask(task.id)}
+            onClick={(e) => handleDeleteTask(e, task.id)}
             type="button"
             className="btn-close"
             aria-label="Close"

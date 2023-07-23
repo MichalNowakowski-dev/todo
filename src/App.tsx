@@ -10,6 +10,7 @@ export interface Task {
 
 function App() {
   const [data, setData] = useState<Task[]>([]);
+  // const [dataDone, setDataDone] = useState<Task[]>([]);
   const [nextTaskId, setNextTaskId] = useState(0);
 
   const fetchData: any = async () => {
@@ -41,23 +42,24 @@ function App() {
     e.target[0].value = "";
   };
 
+  // const deleteTask = (taskID: number) => {
+  //   console.log(data);
+  //   const newData = data.filter((task) => task.id !== taskID);
+  //   setData(newData);
+  //   console.log("clikkk");
+  // };
   const deleteTask = (taskID: number) => {
     const newData = data.filter((task) => task.id !== taskID);
+
     setData(newData);
   };
 
-  const taskIsDone = (e: any, task: Task) => {
+  const taskIsDone = (task: Task) => {
     const updatedTask = { ...task, isDone: !task.isDone }; // Tworzymy nowy obiekt zadania, by zachować niezmienność stanu
     const updatedData = data.map((item) =>
       item.id === task.id ? updatedTask : item
     ); // Aktualizujemy zadanie w tablicy zadan
     setData(updatedData); // Ustawiamy nową tablicę zadan jako stan
-
-    if (updatedTask.isDone) {
-      e.target.classList.add("isDone");
-    } else {
-      e.target.classList.remove("isDone");
-    }
   };
   return (
     <div className="container">
@@ -65,7 +67,7 @@ function App() {
       <DisplayTasks
         tasksList={data}
         deleteTask={deleteTask}
-        taskIsDone={(e, task) => taskIsDone(e, task)}
+        taskIsDone={(task) => taskIsDone(task)}
       />
     </div>
   );
