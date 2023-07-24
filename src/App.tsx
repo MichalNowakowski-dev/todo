@@ -42,12 +42,20 @@ function App() {
     e.target[0].value = "";
   };
 
-  // const deleteTask = (taskID: number) => {
-  //   console.log(data);
-  //   const newData = data.filter((task) => task.id !== taskID);
-  //   setData(newData);
-  //   console.log("clikkk");
-  // };
+  const editTask = (e: any, task: Task) => {
+    e.preventDefault();
+    const target = e.target as HTMLElement;
+    console.log(target.dataset);
+    const userValue = e.target[0].value;
+    const updatedTask = { ...task, task: userValue };
+    const updatedData = data.map((item) =>
+      item.id === task.id ? updatedTask : item
+    ); // Aktualizujemy zadanie w tablicy zadan
+    setData(updatedData); // Ustawiamy nową tablicę zadan jako stan
+
+    // console.log(userValue, task);
+  };
+
   const deleteTask = (taskID: number) => {
     const newData = data.filter((task) => task.id !== taskID);
 
@@ -68,6 +76,7 @@ function App() {
         tasksList={data}
         deleteTask={deleteTask}
         taskIsDone={(task) => taskIsDone(task)}
+        editTask={(e, task) => editTask(e, task)}
       />
     </div>
   );

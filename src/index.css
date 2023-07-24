@@ -17,10 +17,16 @@ form {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+form.addTask {
   padding: 30px 0;
 }
-#todoInput {
+.todoInput.form-control {
   width: 50%;
+}
+.editTaskInput {
+  margin-right: 10px;
 }
 
 ul {
@@ -30,10 +36,29 @@ ul {
 .list-group-item.task {
   display: flex;
   justify-content: space-between;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 li.list-group-item.task.isDone {
   text-decoration: line-through;
   color: gray;
+}
+
+div.li_buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button.editTask_btn {
+  width: max-content;
+  border: none;
+  background-color: transparent;
+  opacity: 0.5;
+}
+button.editTask_btn:hover {
+  width: max-content;
+  border: none;
+  background-color: transparent;
+  opacity: 0.75;
 }
